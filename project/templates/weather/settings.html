@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayarlar Sayfası</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <h1>Ayarlar Sayfası</h1>
+    <div class="theme-buttons">
+        <button class="theme-button" data-theme="theme-light">Açık Tema</button>
+        <button class="theme-button" data-theme="theme-dark">Koyu Tema</button>
+        <button class="theme-button" data-theme="theme-blue">Mavi Tema</button>
+    </div>
+
+    <script>
+        // Butonlara tıklanıldığında temayı değiştirme
+        const buttons = document.querySelectorAll('.theme-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const selectedTheme = this.getAttribute('data-theme');
+                localStorage.setItem('selectedTheme', selectedTheme);
+                document.body.className = selectedTheme;
+                alert("Tema değiştirildi: " + selectedTheme);
+            });
+        });
+    </script>
+</body>
+
+</html>
